@@ -1,0 +1,111 @@
+{
+  "info": {
+    "name": "Fuel route planner",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "base_url", "value": "http://127.0.0.1:8000" }],
+  "item": [
+    {
+      "name": "Plan route - city names",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/route/?start=New York, NY&finish=Los Angeles, CA",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "route", ""],
+          "query": [
+            { "key": "start", "value": "New York, NY" },
+            { "key": "finish", "value": "Los Angeles, CA" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Plan route - coordinates",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/route/?start=41.8781,-87.6298&finish=25.7617,-80.1918",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "route", ""],
+          "query": [
+            { "key": "start", "value": "41.8781,-87.6298" },
+            { "key": "finish", "value": "25.7617,-80.1918" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Plan route - street address",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/route/?start=1600 Pennsylvania Ave NW, Washington DC&finish=Denver, CO",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "route", ""],
+          "query": [
+            { "key": "start", "value": "1600 Pennsylvania Ave NW, Washington DC" },
+            { "key": "finish", "value": "Denver, CO" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Short trip - no stop needed",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/route/?start=Dallas, TX&finish=Houston, TX",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "route", ""],
+          "query": [
+            { "key": "start", "value": "Dallas, TX" },
+            { "key": "finish", "value": "Houston, TX" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Error - missing finish",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/route/?start=Chicago, IL",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "route", ""],
+          "query": [{ "key": "start", "value": "Chicago, IL" }]
+        }
+      }
+    },
+    {
+      "name": "Error - outside the US",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/route/?start=51.5074,-0.1278&finish=Dallas, TX",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "route", ""],
+          "query": [
+            { "key": "start", "value": "51.5074,-0.1278" },
+            { "key": "finish", "value": "Dallas, TX" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Error - no stations in range",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/route/?start=Seattle, WA&finish=Los Angeles, CA",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "route", ""],
+          "query": [
+            { "key": "start", "value": "Seattle, WA" },
+            { "key": "finish", "value": "Los Angeles, CA" }
+          ]
+        }
+      }
+    }
+  ]
+}
